@@ -65,7 +65,10 @@ module.exports = function (options) {
     // check if match base url
     if (pathname.indexOf(options.baseUrl) !== 0) return yield* next;
     pathname = pathname.replace(options.baseUrl, '');
-    pathname = path.join(options.root, pathname + '.md');
+    if (!pathname.endsWith('.md')) {
+      pathname = pathname + '.md';
+    }
+    pathname = path.join(options.root, pathname);
 
     // generate html
     var html = yield* getPage(pathname);

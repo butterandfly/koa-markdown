@@ -74,6 +74,13 @@ describe('test/koa-markdown.test.js', function () {
     .expect('Content-Type', 'text/html; charset=utf-8')
     .expect(200, done);
   });
+  
+  it('should request /docs/index.md ok', function (done) {
+    request(app)
+    .get('/docs/index.md')
+    .expect('Content-Type', 'text/html; charset=utf-8')
+    .expect(200, done);
+  });
 
   it('should request folder /docs/f/ ok', function (done) {
     request(app)
